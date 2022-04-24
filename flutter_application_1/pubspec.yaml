@@ -27,7 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  cloud_firestore: 
+  
   flutter:
     sdk: flutter
   flutter_svg: ^1.0.3
@@ -41,6 +41,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.14.1
   firebase_auth: ^3.3.14
+  flutter_secure_storage: ^5.0.2
+  cloud_firestore: ^3.1.5
+  vertical_card_pager: ^1.5.0  
   
 
 dev_dependencies:

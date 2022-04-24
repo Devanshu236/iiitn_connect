@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/clubs.dart';
 import 'package:flutter_application_1/screen/Admission.dart';
+import 'package:flutter_application_1/screen/add.dart';
 import 'package:flutter_application_1/screen/courses.dart';
 //import 'package:flutter_application_1/screen/addStudent.dart';
 import 'package:flutter_application_1/screen/instituteGoals.dart';
+import 'package:flutter_application_1/screen/lecture.dart';
+import 'package:flutter_application_1/screen/signin.dart';
 //import 'package:flutter_application_1/screen/student_admission.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_application_1/screen/curvedShape.dart';
@@ -22,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body:
        Stack(
+
          
         
        
@@ -29,11 +34,14 @@ class _HomePageState extends State<HomePage> {
            
 
           Container(
-            height:size.height*0.19 ,
+
+            height:size.height*0.22 ,
              decoration: BoxDecoration(gradient: LinearGradient(colors:[hexStringToColor("#5BB3EE"),
         hexStringToColor("#258EC5"),
         hexStringToColor("#00537F")],begin:Alignment.topCenter,end:Alignment.bottomCenter)),
           ),
+          
+
           SafeArea(child:
           Padding(
             padding:  EdgeInsets.all(28.0),
@@ -50,168 +58,200 @@ class _HomePageState extends State<HomePage> {
                         backgroundImage: AssetImage('assets/images/logo.png'),
                         
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(width: 15,),
 
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                      
+                          children:<Widget> [
+                            Text("Devanshu Gupta",style: TextStyle(fontSize: 18),),
+                            Text("Guptadevanshu74@gmail.com",style: TextStyle(fontSize: 13),),
+                             FlatButton(
+                               
+                               color: Color.fromARGB(255, 6, 73, 128),
+                            child: Text('Logout', style: TextStyle(color: Colors.white, fontSize: 17),),
+                            onPressed: () {
+                              Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SignInPage()));
 
-                        children:<Widget> [
-                          Text("Devanshu Gupta",style: TextStyle(fontSize: 23),),
-                          Text("Guptadevanshu74@gmail.com",style: TextStyle(fontSize: 16),)
-
-                        ],
-
+                      
+                            }
+                          ),
+                      
+                          ],
+                      
+                        ),
                       )
                     ],
                   ),
                 ),
 
                 SizedBox(height:50),
-                Expanded(child: 
-                GridView.count(
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  primary: false,
-                  crossAxisCount: 2,
-                  children: <Widget>[
-                    Card(
-                      color: Color.fromARGB(255, 8, 83, 117),
-                      
-                      
-                      
-                      
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                     
-                      
-                      
-                      child:
-                       Column(children:<Widget> [
-                          
-                        
-                        Icon(
-                         
-                         
-                        
-                          Icons.home_max_rounded,size: 80,color: Colors.blueGrey,),
-                          SizedBox(height:15),
-                          
-                          
-                        Text("Institute Goals",style: TextStyle(fontSize: 17,color: Colors.white)),
-                           GestureDetector(
-                           onTap: () {
-                         Navigator.push(context,
+                Expanded(child: GridView(
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
                         MaterialPageRoute(builder: (context) => InstituteDetailPage()));
-          },),
-                        
-                      ],),
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(255, 8, 86, 150),
                     ),
-                    Card(
-                      color: Colors.lightGreen,
-                      
-                     
-                      
-                       
-                          
-                       
-                    
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                      child: Column(children:<Widget> [
-                        
-                          
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Icon(
-                         
-                         
-                        
-                          Icons.event_busy_rounded,size: 80,color: Colors.blueGrey,),
-                          SizedBox(height:15),
-                        
-                       
-                        Text("Student Admission",style: TextStyle(fontSize: 17,color: Colors.white)),
-                         GestureDetector(
-                           onTap: () {
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Admissions()));
-          },),
-                      ],),
-                     ),
-                    Card(
-                      color: Colors.amber,
-                     
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                      child: Column(children:<Widget> [
-                        
-                          
-                        Icon(
-                         
-                         
-                        
-                          Icons.school,size: 80,color: Colors.blueGrey,),
-                          SizedBox(height:15),
-                        Text("Courses Available",style: TextStyle(fontSize: 17,color: Colors.white)),
-                         GestureDetector(
-                           onTap: () {
-                         Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => MyHomePage()));
-          },),
-                      ],),
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Institute Goals",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
                     ),
-                    Card(
-                      color: Colors.deepOrange,
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                      child: Column(children:<Widget> [
-                        
-                         
-                        Icon(
-                         
-                         
-                        
-                        Icons.video_call_rounded,size: 80,color: Colors.blueGrey,),
-                        SizedBox(height:15),
-                        Text("Institute Club ",style: TextStyle(fontSize: 17,color: Colors.white)),
-                         
-                        
-                      ],),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Admisions()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.red,
                     ),
-                    Card(
-                       color: Colors.pink,
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                      child: Column(children:<Widget> [
-                        
-                         
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Icon(
-                         
-                         
-                        
-                          Icons.school,size: 80,color: Colors.blueGrey,),
-                          SizedBox(height:15),
-                        Text("Upcoming Events",style: TextStyle(fontSize: 17,color: Colors.white)),
-                      ],),
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Student Addmisions",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
                     ),
-                    Card(
-                        color: Colors.pink[900],
-                      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(8) ),
-                      elevation: 4,
-                      child: Column(children:<Widget> [
-                        
-                           
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => MyHomePage()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.yellow,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
                         Icon(
-                         
-                         
-                        
-                           Icons.event_busy_rounded,size: 80,color: Colors.blueGrey,),
-                           SizedBox(height:15),
-                        Text("Lecture Schedules",style: TextStyle(fontSize: 17,color: Colors.white)),
-                      ],),
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Courses Available",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
                     ),
-
-                  ],
-                  )
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (context) => AddData()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.pink,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Events",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Lecture()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.green,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Lecture Schedules",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ClubApp()));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.grey,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.article_rounded,
+                          size: 50,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          "Clubs",
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 10)),
                 ),
               ],
 

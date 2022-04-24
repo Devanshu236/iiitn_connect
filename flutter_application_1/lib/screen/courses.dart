@@ -28,6 +28,11 @@ class _MyHomePageState extends State<MyHomePage> {
      
       home:
     Scaffold(
+      appBar: AppBar(
+        title:Text('back'),
+        
+        
+      ),
     
       
       
@@ -206,7 +211,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10)),
         ),
+        
       ),
+      
     ));
   }
 }

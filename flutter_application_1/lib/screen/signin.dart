@@ -178,7 +178,7 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  //firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
+  firebase_auth.FirebaseAuth firebaseAuth = firebase_auth.FirebaseAuth.instance;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _pwdController = TextEditingController();
   bool circular = false;
@@ -285,11 +285,29 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget colorButton() {
     return InkWell(
-      onTap: () {
+      onTap: () async {
+        setState(() {
+          circular:true;
+        });
+
+        try{
+        firebase_auth.UserCredential userCredential=await firebaseAuth.createUserWithEmailAndPassword(email:_emailController.text , password: _pwdController.text);
+          setState(() {
+          circular:false;
+        });
           Navigator.push(context,
                         MaterialPageRoute(builder: (context) => HomeScreen()));
-          
+        }
+        catch(e){
+          final snackBar=SnackBar(content: Text(e.toString()));
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            setState(() {
+          circular:false;
+        });
+
+        }
       },
+      
       child: Container(
         width: MediaQuery.of(context).size.width - 100,
         height: 60,
@@ -307,7 +325,7 @@ class _SignInPageState extends State<SignInPage> {
               : Text(
                   "Sign In",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.black,
                     fontSize: 20,
                   ),
                 ),

@@ -12,6 +12,11 @@ class _InstituteDetailPageState extends State<InstituteDetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+        appBar: AppBar(
+        title:Text('back'),
+        
+        
+      ),
       body: getBody(),
     );
   }

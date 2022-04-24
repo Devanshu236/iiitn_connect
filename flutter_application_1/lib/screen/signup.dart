@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screen/homescreen.dart';
 import 'package:flutter_application_1/screen/instituteGoals.dart';
+import 'package:flutter_application_1/screen/signin.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -57,7 +58,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 signInButton(context, "SignUp", (){
-                  Navigator.push(context, MaterialPageRoute(builder:(context) => HomeScreen(),));
+                  Navigator.push(context, MaterialPageRoute(builder:(context) => SignInPage(),));
                 })
               ],
             ),

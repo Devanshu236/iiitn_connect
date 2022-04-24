@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/screen/Admission.dart';
 
 class User{
     String id;
@@ -21,7 +23,8 @@ class User{
       'enrollment':enrollement,
       'date':date,
     };
-      static User fromJson(Map<String ,dynamic> json)=>User(
+
+    static User fromJson(Map<String ,dynamic> json)=>User(
       id:json['id'],
       name:json['name'],
       enrollement: json['enrollment'],
@@ -30,14 +33,15 @@ class User{
     }
   
 
-class Admisions extends StatefulWidget {
-  const Admisions({ Key? key }) : super(key: key);
+class AddData extends StatefulWidget {
+  const AddData({ Key? key }) : super(key: key);
 
   @override
-  State<Admisions> createState() => _AdmisionsState();
+  State<AddData> createState() => _AddDataState();
 }
 
-class _AdmisionsState extends State<Admisions> {
+class _AddDataState extends State<AddData> {
+ 
 
   
 
@@ -45,6 +49,7 @@ class _AdmisionsState extends State<Admisions> {
   final controllerEnrollment=TextEditingController();
 
   final controllerDate=TextEditingController();
+
   Stream <List<User>> readUsers()=>
   FirebaseFirestore.instance.collection('user')
   .snapshots().map((snapshot)=>
@@ -60,15 +65,6 @@ class _AdmisionsState extends State<Admisions> {
       
 
 
-      // final user=User(
-      //   id:docUser.id,
-      //   name: "name",
-      //   enrollement:97,
-      //   date: "sarah",
-
-      // );
-      // final json=user.toJson();
-        
       // await docUser.set(json);
     }
     
@@ -76,7 +72,7 @@ class _AdmisionsState extends State<Admisions> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:Text('Add user'),
+        title:Text('add user'),
         
       ),
       body:ListView(
@@ -119,6 +115,7 @@ class _AdmisionsState extends State<Admisions> {
             );
             createUser(user);
             Navigator.pop(context); }, child: Text('Create'),),
+
             StreamBuilder<List<User>>(
               stream: readUsers(),
               builder: (context,snapshot){
@@ -145,9 +142,12 @@ class _AdmisionsState extends State<Admisions> {
         ],
       ),
     );
+
+  
+    
     
   }
-     Widget buildUser(User user)=> ListTile(
+    Widget buildUser(User user)=> ListTile(
       //leading:CircleAvatar(child: Text(user.enrollement),),
       title:Text(user.name),
       subtitle:Text(user.date),
